@@ -1,0 +1,11 @@
+{
+  "name": "react-calculator",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "express": "^4.15.3"
+  }
+}
