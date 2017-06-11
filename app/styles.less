@@ -1,11 +1,14 @@
-@base-display: #1c191c;
-@base-keys: #e0e0e7;
+@base-display: #353535;
+@base-keys: rgba(224, 224, 231, .5);
 
 html {
   box-sizing: border-box;
 }
 body {
   margin: 0;
+  background: #44A08D;
+  background: -webkit-linear-gradient(to bottom, #44A08D, #093637);
+  background: linear-gradient(to bottom, #44A08D, #093637);
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -29,7 +32,9 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  //box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-image: url(./triangle-back.png);
+  background-size: cover;
+  //box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 1px 2px rgba(0,0,0,0.23);
 
   .calc-display {
     color: white;
@@ -98,7 +103,7 @@ body {
 }
 
 .calc .operator-keys {
-  background:  linear-gradient(to bottom, rgba(252,156,23,1) 0%, rgba(247,126,27,1) 100%);
+  background:  linear-gradient(to bottom, rgba(252,156,23,.5) 0%, rgba(247,126,27,.5) 100%);
 
   .calc-key {
     color: white;

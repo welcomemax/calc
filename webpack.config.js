@@ -27,6 +27,11 @@ module.exports = {
                 }
             },
             {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'url-loader',
+                include: path.resolve(__dirname, 'app'),
+            },
+            {
                 test: /\.less$/,
                 loader: 'style-loader!css-loader!less-loader',
                 include: path.resolve(__dirname, 'app')

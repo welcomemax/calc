@@ -20,9 +20,11 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
-    "style-loader": "^0.18.2"
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.8"
   },
   "dependencies": {
     "material-design-lite": "^1.3.0",

@@ -47,6 +47,14 @@ class Calculator extends React.Component {
         })
     }
 
+    clearLastChar() {
+        const { displayValue } = this.state
+
+        this.setState({
+            displayValue: displayValue.substring(0, displayValue.length - 1) || '0'
+        })
+    }
+
     performOperation(nextOperator) {
         const { value, displayValue, operator } = this.state;
         const inputValue = parseFloat(displayValue);
@@ -115,6 +123,45 @@ class Calculator extends React.Component {
                 displayValue: displayValue === '0' ? String(digit) : displayValue + digit
             })
         }
+    }
+
+    handleKeyDown(event) {
+        let { key } = event;
+
+        if (event.ctrlKey || event.metaKey)
+            return;
+
+        if (key === 'Enter')
+            key = '=';
+
+        if ((/\d/).test(key)) {
+            this.inputDigit(parseInt(key, 10))
+        } else if (key in CalculatorOperations) {
+            this.performOperation(key)
+        } else if (key === '.') {
+            this.inputDot()
+        } else if (key === '%') {
+            this.inputPercent()
+        } else if (key === 'Backspace') {
+            event.preventDefault()
+            this.clearLastChar();
+        } else if (key === 'Clear') {
+            event.preventDefault()
+
+            if (this.state.displayValue !== '0') {
+                this.clearDisplay()
+            } else {
+                this.clearAll()
+            }
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('keydown', this.handleKeyDown)
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.handleKeyDown)
     }
 
     render() {
