@@ -9544,8 +9544,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js!./styles.css", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js!./styles.css");
+		module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/less-loader/dist/index.js!./styles.less", function() {
+			var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/less-loader/dist/index.js!./styles.less");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -9816,7 +9816,7 @@ var Calculator = function (_React$Component2) {
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-3', onClick: function onClick() {
-                                        return _this3.inputDigit(4);
+                                        return _this3.inputDigit(3);
                                     } },
                                 '3'
                             ),
@@ -9927,7 +9927,7 @@ exports = module.exports = __webpack_require__(85)(undefined);
 
 
 // module
-exports.push([module.i, "html {\r\n    box-sizing: border-box;\r\n}\r\n*, *:before, *:after {\r\n    box-sizing: inherit;\r\n}\r\n\r\nbody {\r\n    margin: 0;\r\n}\r\n\r\n\r\n/* mdl-button mdl-js-button mdl-js-ripple-effect */\r\n\r\nbutton {\r\n    display: block;\r\n    background: none;\r\n    border: none;\r\n    padding: 0;\r\n    font-family: inherit;\r\n    user-select: none;\r\n    cursor: pointer;\r\n    outline: none;\r\n    -webkit-tap-highlight-color: rgba(0,0,0,0);\r\n}\r\n\r\n#app {\r\n    height: 100vh;\r\n\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n}\r\n\r\n#wrapper {\r\n    width: 320px;\r\n    height: 520px;\r\n    position: relative;\r\n}\r\n\r\n.calc {\r\n    width: 100%;\r\n    height: 100%;\r\n    background: black;\r\n    display: flex;\r\n    flex-direction: column;\r\n    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);\r\n}\r\n\r\n.calc-display {\r\n    color: white;\r\n    background: #1c191c;\r\n    line-height: 120px;\r\n    font-size: 6em;\r\n    padding: 0 30px;\r\n    text-align: right;\r\n    flex: 1;\r\n}\r\n\r\n.auto-scaling-text {\r\n    padding: 0 30px;\r\n    position: absolute;\r\n    right: 0;\r\n    transform-origin: right;\r\n}\r\n\r\n.calc-keypad {\r\n    height: 400px;\r\n    display: flex;\r\n}\r\n\r\n.calc .input-keys {\r\n    width: 240px;\r\n}\r\n\r\n.calc .function-keys {\r\n    display: flex;\r\n}\r\n\r\n.calc .digit-keys {\r\n    background: #e0e0e7;\r\n    display: flex;\r\n    flex-direction: row;\r\n    flex-wrap: wrap-reverse;\r\n}\r\n\r\n.calc-key {\r\n    width: 80px;\r\n    height: 80px;\r\n    text-align: center;\r\n    line-height: 80px;\r\n    border-radius: 0;\r\n}\r\n.calc .function-keys .calc-key {\r\n    font-size: 2em;\r\n}\r\n.calc .function-keys .key-multiply {\r\n    line-height: 50px;\r\n}\r\n.calc .digit-keys .calc-key {\r\n    font-size: 2.25em;\r\n}\r\n.calc .digit-keys .key-0 {\r\n    width: 160px;\r\n    text-align: left;\r\n    padding-left: 32px;\r\n}\r\n.calc .digit-keys .key-dot {\r\n    padding-top: 1em;\r\n    font-size: 0.75em;\r\n}\r\n.calc .operator-keys .calc-key {\r\n    color: white;\r\n    font-size: 3em;\r\n}\r\n\r\n.calc .function-keys {\r\n    background: linear-gradient(to bottom, rgba(202,202,204,1) 0%, rgba(196,194,204,1) 100%);\r\n}\r\n.calc .operator-keys {\r\n    background:  linear-gradient(to bottom, rgba(252,156,23,1) 0%, rgba(247,126,27,1) 100%);\r\n}", ""]);
+exports.push([module.i, "html {\n  box-sizing: border-box;\n}\nbody {\n  margin: 0;\n}\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n#app {\n  height: 100vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#wrapper {\n  width: 320px;\n  height: 520px;\n  position: relative;\n}\n.calc {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n}\n.calc .calc-display {\n  color: white;\n  background: #1c191c;\n  line-height: 120px;\n  font-size: 6em;\n  padding: 0 30px;\n  text-align: right;\n  flex: 1;\n}\n.calc .calc-keypad {\n  height: 400px;\n  display: flex;\n}\n.calc .calc-key {\n  display: block;\n  background: none;\n  border: none;\n  padding: 0;\n  font-family: inherit;\n  user-select: none;\n  cursor: pointer;\n  outline: none;\n  width: 80px;\n  height: 80px;\n  text-align: center;\n  line-height: 80px;\n  border-radius: 0;\n}\n.calc .calc-key.key-dot {\n  padding-top: 1em;\n  font-size: 0.75em !important;\n}\n.calc .calc-key.key-0 {\n  width: 160px;\n  text-align: left;\n  padding-left: 32px;\n}\n.calc .input-keys {\n  width: 240px;\n}\n.calc .input-keys .digit-keys {\n  background: #e0e0e7;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap-reverse;\n}\n.calc .input-keys .digit-keys .calc-key {\n  font-size: 2.25em;\n}\n.calc .input-keys .function-keys {\n  display: flex;\n  background: #c3c3d1;\n}\n.calc .input-keys .function-keys .calc-key {\n  font-size: 2em;\n}\n.calc .operator-keys {\n  background: linear-gradient(to bottom, #fc9c17 0%, #f77e1b 100%);\n}\n.calc .operator-keys .calc-key {\n  color: white;\n  font-size: 3em;\n}\n.auto-scaling-text {\n  padding: 0 30px;\n  position: absolute;\n  right: 0;\n  transform-origin: right;\n}\n", ""]);
 
 // exports
 

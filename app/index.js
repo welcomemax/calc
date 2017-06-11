@@ -1,10 +1,10 @@
 'use strict';
 
-import './styles.css'
+import './styles.less'
 
 class CalcKey extends React.Component {
     render() {
-        var props = this.props
+        var props = this.props;
 
         return (
             <button className={`mdl-button mdl-js-button mdl-js-ripple-effect calc-key ${props.className}`} onClick={props.onClick}>{props.children}</button>
@@ -18,7 +18,7 @@ const CalculatorOperations = {
     '+': (prevValue, nextValue) => prevValue + nextValue,
     '-': (prevValue, nextValue) => prevValue - nextValue,
     '=': (prevValue, nextValue) => nextValue
-}
+};
 
 class Calculator extends React.Component {
 
@@ -48,16 +48,16 @@ class Calculator extends React.Component {
     }
 
     performOperation(nextOperator) {
-        const { value, displayValue, operator } = this.state
-        const inputValue = parseFloat(displayValue)
+        const { value, displayValue, operator } = this.state;
+        const inputValue = parseFloat(displayValue);
 
         if (value == null) {
             this.setState({
                 value: inputValue
             })
         } else if (operator) {
-            const currentValue = value || 0
-            const newValue = CalculatorOperations[operator](currentValue, inputValue)
+            const currentValue = value || 0;
+            const newValue = CalculatorOperations[operator](currentValue, inputValue);
 
             this.setState({
                 value: newValue,
@@ -72,7 +72,7 @@ class Calculator extends React.Component {
     }
 
     toggleSign() {
-        const { displayValue } = this.state
+        const { displayValue } = this.state;
 
         this.setState({
             displayValue: displayValue.charAt(0) === '-' ? displayValue.substr(1) : '-' + displayValue
@@ -80,11 +80,11 @@ class Calculator extends React.Component {
     }
 
     inputPercent() {
-        const { displayValue } = this.state
-        const value = parseFloat(displayValue)
+        const { displayValue } = this.state;
+        const value = parseFloat(displayValue);
 
         if (value === 0)
-            return
+            return;
 
         this.setState({
             displayValue: String(value / 100)
@@ -92,7 +92,7 @@ class Calculator extends React.Component {
     }
 
     inputDot() {
-        const { displayValue } = this.state
+        const { displayValue } = this.state;
 
         if (!(/\./).test(displayValue)) {
             this.setState({
@@ -103,7 +103,7 @@ class Calculator extends React.Component {
     }
 
     inputDigit(digit) {
-        const { displayValue, waitingForOperand } = this.state
+        const { displayValue, waitingForOperand } = this.state;
 
         if (waitingForOperand) {
             this.setState({
@@ -118,10 +118,10 @@ class Calculator extends React.Component {
     }
 
     render() {
-        const { displayValue } = this.state
+        const { displayValue } = this.state;
 
-        const clearDisplay = displayValue !== '0'
-        const clearText = clearDisplay ? 'C' : 'AC'
+        const clearDisplay = displayValue !== '0';
+        const clearText = clearDisplay ? 'C' : 'AC';
 
         return (
             <div className="calc">
@@ -138,7 +138,7 @@ class Calculator extends React.Component {
                             <CalcKey className="key-dot" onClick={() => this.inputDot()}>●</CalcKey>
                             <CalcKey className="key-1" onClick={() => this.inputDigit(1)}>1</CalcKey>
                             <CalcKey className="key-2" onClick={() => this.inputDigit(2)}>2</CalcKey>
-                            <CalcKey className="key-3" onClick={() => this.inputDigit(4)}>3</CalcKey>
+                            <CalcKey className="key-3" onClick={() => this.inputDigit(3)}>3</CalcKey>
                             <CalcKey className="key-4" onClick={() => this.inputDigit(4)}>4</CalcKey>
                             <CalcKey className="key-5" onClick={() => this.inputDigit(5)}>5</CalcKey>
                             <CalcKey className="key-6" onClick={() => this.inputDigit(6)}>6</CalcKey>
@@ -165,4 +165,4 @@ ReactDOM.render(
         <Calculator/>
     </div>,
     document.getElementById('app')
-)
+);
