@@ -1,9 +1,13 @@
+'use strict';
+
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
     entry: './app/index.js',
     output: {
         filename: 'bundle.js',
+        publicPath: '/dist/',
         path: path.resolve(__dirname, 'dist')
     },
     watch: true,
@@ -14,10 +18,20 @@ module.exports = {
                 loader: 'babel-loader',
                 include: path.join(__dirname, 'app'),
                 query: {
-                    presets: ['react', 'es2015']
+                    presets: ['es2015', 'react']
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
             }
-        ],
-        noParse: /react/
-    }
+        ]
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            React: 'react',
+            ReactDOM: 'react-dom'
+            //PointTarget: 'react-point'
+        })
+    ]
 };

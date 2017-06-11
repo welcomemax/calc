@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "React Calculator",
   "main": "server.js",
-  "scripts": {
-
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/welcomemax/calc.git"
@@ -20,10 +18,14 @@
     "babel-core": "^6.25.0",
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1"
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "style-loader": "^0.18.2"
   },
   "dependencies": {
+    "material-design-lite": "^1.3.0",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-point": "^2.1.1"
   }
 }
