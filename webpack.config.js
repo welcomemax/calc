@@ -7,7 +7,7 @@ const NODE_ENV = process.env.NODE_ENV || 'dev';
 
 module.exports = {
 
-    entry: './app/index.js',
+    entry: './app/entry.js',
     output: {
         filename: 'bundle.js',
         publicPath: '/dist/',
@@ -23,7 +23,7 @@ module.exports = {
                 loader: 'babel-loader',
                 include: path.resolve(__dirname, 'app'),
                 query: {
-                    presets: ['es2015', 'react']
+                    presets: ['es2015', 'react', 'stage-0']
                 }
             },
             {
@@ -32,9 +32,8 @@ module.exports = {
                 include: path.resolve(__dirname, 'app'),
             },
             {
-                test: /\.less$/,
-                loader: 'style-loader!css-loader!less-loader',
-                include: path.resolve(__dirname, 'app')
+                test: /\.(less|css)$/,
+                loader: 'style-loader!css-loader!less-loader'
             }
         ]
     },
