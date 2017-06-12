@@ -9596,6 +9596,31 @@ var CalcKey = function (_React$Component) {
     return CalcKey;
 }(React.Component);
 
+var CalcDisplay = function (_React$Component2) {
+    _inherits(CalcDisplay, _React$Component2);
+
+    function CalcDisplay() {
+        _classCallCheck(this, CalcDisplay);
+
+        return _possibleConstructorReturn(this, (CalcDisplay.__proto__ || Object.getPrototypeOf(CalcDisplay)).apply(this, arguments));
+    }
+
+    _createClass(CalcDisplay, [{
+        key: 'render',
+        value: function render() {
+            var props = this.props;
+
+            return React.createElement(
+                'div',
+                { className: 'calc-display' },
+                props.value
+            );
+        }
+    }]);
+
+    return CalcDisplay;
+}(React.Component);
+
 var CalculatorOperations = {
     '/': function _(prevValue, nextValue) {
         return prevValue / nextValue;
@@ -9614,21 +9639,21 @@ var CalculatorOperations = {
     }
 };
 
-var Calculator = function (_React$Component2) {
-    _inherits(Calculator, _React$Component2);
+var Calculator = function (_React$Component3) {
+    _inherits(Calculator, _React$Component3);
 
     function Calculator(props) {
         _classCallCheck(this, Calculator);
 
-        var _this2 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
+        var _this3 = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).call(this, props));
 
-        _this2.state = {
+        _this3.state = {
             value: null,
             displayValue: '0',
             operator: null,
             waitingForOperand: false
         };
-        return _this2;
+        return _this3;
     }
 
     _createClass(Calculator, [{
@@ -9786,7 +9811,7 @@ var Calculator = function (_React$Component2) {
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
+            var _this4 = this;
 
             var displayValue = this.state.displayValue;
 
@@ -9794,14 +9819,14 @@ var Calculator = function (_React$Component2) {
             var clearDisplay = displayValue !== '0';
             var clearText = clearDisplay ? 'C' : 'AC';
 
+            var waitingForOperand = this.state.waitingForOperand;
+            var operator = this.state.operator;
+
+
             return React.createElement(
                 'div',
                 { className: 'calc' },
-                React.createElement(
-                    'div',
-                    { className: 'calc-display' },
-                    displayValue
-                ),
+                React.createElement(CalcDisplay, { value: displayValue }),
                 React.createElement(
                     'div',
                     { className: 'calc-keypad' },
@@ -9814,21 +9839,21 @@ var Calculator = function (_React$Component2) {
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-clear', onClick: function onClick() {
-                                        return clearDisplay ? _this3.clearDisplay() : _this3.clearAll();
+                                        return clearDisplay ? _this4.clearDisplay() : _this4.clearAll();
                                     } },
                                 clearText
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-sign', onClick: function onClick() {
-                                        return _this3.toggleSign();
+                                        return _this4.toggleSign();
                                     } },
                                 '\xB1'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-percent', onClick: function onClick() {
-                                        return _this3.inputPercent();
+                                        return _this4.inputPercent();
                                     } },
                                 '%'
                             )
@@ -9839,77 +9864,77 @@ var Calculator = function (_React$Component2) {
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-0', onClick: function onClick() {
-                                        return _this3.inputDigit(0);
+                                        return _this4.inputDigit(0);
                                     } },
                                 '0'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-dot', onClick: function onClick() {
-                                        return _this3.inputDot();
+                                        return _this4.inputDot();
                                     } },
                                 '\u25CF'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-1', onClick: function onClick() {
-                                        return _this3.inputDigit(1);
+                                        return _this4.inputDigit(1);
                                     } },
                                 '1'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-2', onClick: function onClick() {
-                                        return _this3.inputDigit(2);
+                                        return _this4.inputDigit(2);
                                     } },
                                 '2'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-3', onClick: function onClick() {
-                                        return _this3.inputDigit(3);
+                                        return _this4.inputDigit(3);
                                     } },
                                 '3'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-4', onClick: function onClick() {
-                                        return _this3.inputDigit(4);
+                                        return _this4.inputDigit(4);
                                     } },
                                 '4'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-5', onClick: function onClick() {
-                                        return _this3.inputDigit(5);
+                                        return _this4.inputDigit(5);
                                     } },
                                 '5'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-6', onClick: function onClick() {
-                                        return _this3.inputDigit(6);
+                                        return _this4.inputDigit(6);
                                     } },
                                 '6'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-7', onClick: function onClick() {
-                                        return _this3.inputDigit(7);
+                                        return _this4.inputDigit(7);
                                     } },
                                 '7'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-8', onClick: function onClick() {
-                                        return _this3.inputDigit(8);
+                                        return _this4.inputDigit(8);
                                     } },
                                 '8'
                             ),
                             React.createElement(
                                 CalcKey,
                                 { className: 'key-9', onClick: function onClick() {
-                                        return _this3.inputDigit(9);
+                                        return _this4.inputDigit(9);
                                     } },
                                 '9'
                             )
@@ -9920,36 +9945,36 @@ var Calculator = function (_React$Component2) {
                         { className: 'operator-keys' },
                         React.createElement(
                             CalcKey,
-                            { className: 'key-divide', onClick: function onClick() {
-                                    return _this3.performOperation('/');
+                            { className: 'key-divide ' + (waitingForOperand && operator == '/' ? 'active' : ''), onClick: function onClick() {
+                                    return _this4.performOperation('/');
                                 } },
                             '\xF7'
                         ),
                         React.createElement(
                             CalcKey,
-                            { className: 'key-multiply', onClick: function onClick() {
-                                    return _this3.performOperation('*');
+                            { className: 'key-multiply ' + (waitingForOperand && operator == '*' ? 'active' : ''), onClick: function onClick() {
+                                    return _this4.performOperation('*');
                                 } },
                             '\xD7'
                         ),
                         React.createElement(
                             CalcKey,
-                            { className: 'key-subtract', onClick: function onClick() {
-                                    return _this3.performOperation('-');
+                            { className: 'key-subtract ' + (waitingForOperand && operator == '-' ? 'active' : ''), onClick: function onClick() {
+                                    return _this4.performOperation('-');
                                 } },
                             '\u2212'
                         ),
                         React.createElement(
                             CalcKey,
-                            { className: 'key-add', onClick: function onClick() {
-                                    return _this3.performOperation('+');
+                            { className: 'key-add ' + (waitingForOperand && operator == '+' ? 'active' : ''), onClick: function onClick() {
+                                    return _this4.performOperation('+');
                                 } },
                             '+'
                         ),
                         React.createElement(
                             CalcKey,
                             { className: 'key-equals', onClick: function onClick() {
-                                    return _this3.performOperation('=');
+                                    return _this4.performOperation('=');
                                 } },
                             '='
                         )
@@ -9978,7 +10003,7 @@ exports = module.exports = __webpack_require__(85)(undefined);
 
 
 // module
-exports.push([module.i, "html {\n  box-sizing: border-box;\n}\nbody {\n  margin: 0;\n  background: #44A08D;\n  background: -webkit-linear-gradient(to bottom, #44A08D, #093637);\n  background: linear-gradient(to bottom, #44A08D, #093637);\n}\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n#app {\n  height: 100vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#wrapper {\n  width: 320px;\n  height: 520px;\n  position: relative;\n}\n.calc {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  background-image: url(" + __webpack_require__(187) + ");\n  background-size: cover;\n}\n.calc .calc-display {\n  color: white;\n  background: #353535;\n  line-height: 120px;\n  font-size: 6em;\n  padding: 0 30px;\n  text-align: right;\n  flex: 1;\n}\n.calc .calc-keypad {\n  height: 400px;\n  display: flex;\n}\n.calc .calc-key {\n  display: block;\n  background: none;\n  border: none;\n  padding: 0;\n  font-family: inherit;\n  user-select: none;\n  cursor: pointer;\n  outline: none;\n  width: 80px;\n  height: 80px;\n  text-align: center;\n  line-height: 80px;\n  border-radius: 0;\n}\n.calc .calc-key.key-dot {\n  padding-top: 1em;\n  font-size: 0.75em !important;\n}\n.calc .calc-key.key-0 {\n  width: 160px;\n  text-align: left;\n  padding-left: 32px;\n}\n.calc .input-keys {\n  width: 240px;\n}\n.calc .input-keys .digit-keys {\n  background: rgba(224, 224, 231, 0.5);\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap-reverse;\n}\n.calc .input-keys .digit-keys .calc-key {\n  font-size: 2.25em;\n}\n.calc .input-keys .function-keys {\n  display: flex;\n  background: rgba(195, 195, 209, 0.5);\n}\n.calc .input-keys .function-keys .calc-key {\n  font-size: 2em;\n}\n.calc .operator-keys {\n  background: linear-gradient(to bottom, rgba(252, 156, 23, 0.5) 0%, rgba(247, 126, 27, 0.5) 100%);\n}\n.calc .operator-keys .calc-key {\n  color: white;\n  font-size: 3em;\n}\n.auto-scaling-text {\n  padding: 0 30px;\n  position: absolute;\n  right: 0;\n  transform-origin: right;\n}\n", ""]);
+exports.push([module.i, "html {\n  box-sizing: border-box;\n}\nbody {\n  margin: 0;\n  background: #44A08D;\n  background: -webkit-linear-gradient(to bottom, #44A08D, #093637);\n  background: linear-gradient(to bottom, #44A08D, #093637);\n}\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n#app {\n  height: 100vh;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n#wrapper {\n  width: 320px;\n  height: 520px;\n  position: relative;\n}\n.calc {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  background-image: url(" + __webpack_require__(187) + ");\n  background-size: cover;\n}\n.calc .calc-display {\n  color: white;\n  background: #353535;\n  line-height: 120px;\n  font-size: 6em;\n  padding: 0 30px;\n  text-align: right;\n  flex: 1;\n}\n.calc .calc-keypad {\n  height: 400px;\n  display: flex;\n}\n.calc .calc-key {\n  display: block;\n  background: none;\n  border: none;\n  padding: 0;\n  font-family: inherit;\n  user-select: none;\n  cursor: pointer;\n  outline: none;\n  width: 80px;\n  height: 80px;\n  text-align: center;\n  line-height: 80px;\n  border-radius: 0;\n}\n.calc .calc-key:hover,\n.calc .calc-key.active {\n  background: rgba(0, 0, 0, 0.1);\n}\n.calc .calc-key.key-dot {\n  padding-top: 1em;\n  font-size: 0.75em !important;\n}\n.calc .calc-key.key-0 {\n  width: 160px;\n  text-align: left;\n  padding-left: 32px;\n}\n.calc .input-keys {\n  width: 240px;\n}\n.calc .input-keys .digit-keys {\n  background: rgba(224, 224, 231, 0.5);\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap-reverse;\n}\n.calc .input-keys .digit-keys .calc-key {\n  font-size: 2.25em;\n}\n.calc .input-keys .function-keys {\n  display: flex;\n  background: rgba(195, 195, 209, 0.5);\n}\n.calc .input-keys .function-keys .calc-key {\n  font-size: 2em;\n}\n.calc .operator-keys {\n  background: linear-gradient(to bottom, rgba(252, 156, 23, 0.5) 0%, rgba(247, 126, 27, 0.5) 100%);\n}\n.calc .operator-keys .calc-key {\n  color: white;\n  font-size: 3em;\n}\n.auto-scaling-text {\n  padding: 0 30px;\n  position: absolute;\n  right: 0;\n  transform-origin: right;\n}\n", ""]);
 
 // exports
 

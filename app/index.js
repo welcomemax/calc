@@ -12,6 +12,17 @@ class CalcKey extends React.Component {
     }
 }
 
+class CalcDisplay extends React.Component {
+    render() {
+        var props = this.props;
+
+        return (
+            <div className="calc-display">{props.value}</div>
+        )
+    }
+}
+
+
 const CalculatorOperations = {
     '/': (prevValue, nextValue) => prevValue / nextValue,
     '*': (prevValue, nextValue) => prevValue * nextValue,
@@ -48,7 +59,7 @@ class Calculator extends React.Component {
     }
 
     clearLastChar() {
-        const { displayValue } = this.state
+        const { displayValue } = this.state;
 
         this.setState({
             displayValue: displayValue.substring(0, displayValue.length - 1) || '0'
@@ -170,9 +181,12 @@ class Calculator extends React.Component {
         const clearDisplay = displayValue !== '0';
         const clearText = clearDisplay ? 'C' : 'AC';
 
+        const { waitingForOperand } = this.state;
+        const { operator } = this.state;
+
         return (
             <div className="calc">
-                <div className="calc-display">{ displayValue }</div>
+                <CalcDisplay value={ displayValue }/>
                 <div className="calc-keypad">
                     <div className="input-keys">
                         <div className="function-keys">
@@ -195,10 +209,10 @@ class Calculator extends React.Component {
                         </div>
                     </div>
                     <div className="operator-keys">
-                        <CalcKey className="key-divide" onClick={() => this.performOperation('/')}>÷</CalcKey>
-                        <CalcKey className="key-multiply" onClick={() => this.performOperation('*')}>×</CalcKey>
-                        <CalcKey className="key-subtract" onClick={() => this.performOperation('-')}>−</CalcKey>
-                        <CalcKey className="key-add" onClick={() => this.performOperation('+')}>+</CalcKey>
+                        <CalcKey className={`key-divide ${(waitingForOperand && operator == '/') ? 'active' : ''}`} onClick={() => this.performOperation('/')}>÷</CalcKey>
+                        <CalcKey className={`key-multiply ${(waitingForOperand && operator == '*') ? 'active' : ''}`} onClick={() => this.performOperation('*')}>×</CalcKey>
+                        <CalcKey className={`key-subtract ${(waitingForOperand && operator == '-') ? 'active' : ''}`} onClick={() => this.performOperation('-')}>−</CalcKey>
+                        <CalcKey className={`key-add ${(waitingForOperand && operator == '+') ? 'active' : ''}`} onClick={() => this.performOperation('+')}>+</CalcKey>
                         <CalcKey className="key-equals" onClick={() => this.performOperation('=')}>=</CalcKey>
                     </div>
                 </div>
