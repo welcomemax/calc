@@ -1,7 +1,6 @@
-# calc
-## Калькулятор на react
+# Калькулятор на react
 
-Выполнен в стиле **Material Design**, стили на препроцессоре **less**
+Выполнен в стиле **Material Design**, стили на препроцессоре **less**.
 Бандл собран через **webpack** и включает в себя как и React, так и MDL
 
 ## Установка
@@ -13,7 +12,7 @@ npm install
 ```
 Окружение webpack имеет 2 конфигурации: dev и production. С watch и uglify в зависимости от него
 ```
-set NODE_ENV=environment
+set NODE_ENV=dev|production
 webpack
 ```
 Запуск через статичный сервер, либо напрямую через index.html
