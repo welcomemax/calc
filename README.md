@@ -1,6 +1,6 @@
 # calc
-Калькутор на react - redux
+РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ РЅР° react - redux
 
-Установка
-git clone https://github.com/welcomemax/calc.git
-npm install
+РЈСЃС‚Р°РЅРѕРІРєР°
+    git clone https://github.com/welcomemax/calc.git
+    npm install
