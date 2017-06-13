@@ -29,7 +29,7 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: 'url-loader',
-                include: path.resolve(__dirname, 'app'),
+                include: path.resolve(__dirname, 'app')
             },
             {
                 test: /\.(less|css)$/,
@@ -43,7 +43,8 @@ module.exports = {
             React: 'react',
             ReactDOM: 'react-dom'
             //PointTarget: 'react-point'
-        })
+        }),
+        new webpack.DefinePlugin({ NODE_ENV: JSON.stringify(NODE_ENV) })
     ],
 
     resolve: {
